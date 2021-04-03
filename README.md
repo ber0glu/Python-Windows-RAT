@@ -6,7 +6,7 @@ This software allows you to run commands on the remote or local system using soc
 as well as coded for many other operations.
 
 ## Features
-![All Features](https://i.ibb.co/DpQnrxL/git.png)
+![All Features](https://i.ibb.co/6ny4TH1/git.png)
 
 ## Usage
 1-First you need to run server.py to start listening to the network (python server.py <ip> <port>)
