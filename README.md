@@ -10,6 +10,7 @@ as well as coded for many other operations.
 
 ## Usage
 1-First you need to run server.py to start listening to the network (python server.py <ip> <port>)
+
 2-Then you need to run client.py (python client.py)
 
 ## Responsibility Information
