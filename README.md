@@ -9,7 +9,7 @@ as well as coded for many other operations.
 ![All Features](https://i.ibb.co/6ny4TH1/git.png)
 
 ## Usage
-1-First you need to run server.py to start listening to the network (python server.py <ip> <port>)
+1-First you need to run server.py to start listening to the network (python server.py ip port)
 
 2-Then you need to run client.py (python client.py)
 
