@@ -13,9 +13,13 @@ as well as coded for many other operations.
   
   example,
     
-    python server.py localhost 4444
+   python server.py localhost 4444
     
 2-Then you need to run client.py (python client.py)
+
+!Important Information 
+
+   This software is coded in version 3.8.5
 
 ## Responsibility Information
 Use this program on your own system to understand the socket logic and see what malware can cause.
