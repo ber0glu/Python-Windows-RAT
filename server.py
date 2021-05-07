@@ -22,7 +22,7 @@ def connection(byte):
 conn, addr = s.accept()
 host, port2 = addr
 
-print("\n Connection was succesfully :: ip = {} :: port = {}".format(host,port2))
+print(f"\n Connection was succesfully :: ip = {host} :: port = {port2}")
 
 while True:
 
